@@ -6535,7 +6535,7 @@ static void *janus_streaming_relay_thread(void *data) {
 				continue;
 			}
 			now = janus_get_monotonic_time();
-			if(!source->reconnecting && (now - source->reconnect_timer > 5*G_USEC_PER_SEC)) {
+			if(!source->reconnecting && (now - source->reconnect_timer > 60*G_USEC_PER_SEC)) {
 				/* 5 seconds passed and no media? Assume the RTSP server has gone and schedule a reconnect */
 				JANUS_LOG(LOG_WARN, "[%s] %"SCNi64"s passed with no media, trying to reconnect the RTSP stream\n",
 					name, (now - source->reconnect_timer)/G_USEC_PER_SEC);
